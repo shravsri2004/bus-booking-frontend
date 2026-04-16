@@ -23,6 +23,10 @@ public class Customer {
 	
 	@Column(name="phone_no")
 	private String phoneNo;
+	
+	@Column(name="user_name")
+	private String username;
+	
 
 	public Integer getCustId() {
 		return custId;
@@ -38,6 +42,14 @@ public class Customer {
 
 	public void setCustName(String custName) {
 		this.custName = custName;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPhoneNo() {
