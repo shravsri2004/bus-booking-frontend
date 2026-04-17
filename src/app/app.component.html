@@ -1,10 +1,20 @@
-<div style="
-  height: 100vh;
-  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-">
-  <router-outlet></router-outlet>
+<header class="bg-warning-subtle m-2 p-2">
+ <div class="text-center my-4">
+  <h1 class="fw-bold text-primary">
+    🚌 {{ title }}
+  </h1>
+ 
 </div>
+
+  </header>
+
+<nav class="m-2 p-2 bg-dark">
+  <a class="btn btn-danger m-2 text-white" routerLink="/booking">
+    Search Buses
+  </a>
+
+  </nav>
+
+<main class="m-2 p-2">
+  <router-outlet></router-outlet>
+</main>

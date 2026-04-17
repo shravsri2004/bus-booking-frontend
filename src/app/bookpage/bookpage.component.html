@@ -1,120 +1,91 @@
-<!-- bookpage.component.html -->
+<div class="min-vh-100 bg-page">
 
-<div style="min-height:100vh; background:linear-gradient(to right,#e8b6d8,#bcccf8);">
+  <!-- HEADER -->
+  <div class="header-bar d-flex justify-content-between align-items-center px-4">
 
-    <!-- HEADER -->
-    <div style="
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:25px;
-    color:white;
-    font-size:38px;
-    font-weight:bold;
-    ">
-        Bus Booking Management System
+    <div class="fw-bold fs-3 text-primary">
+      🚌 Bus Booking
     </div>
 
+    <div>
+      <button class="btn btn-outline-primary me-2">Login</button>
+      <button class="btn btn-primary fw-bold">Sign Up</button>
+    </div>
 
-    <!-- HERO IMAGE SECTION -->
-    <div style="
-    position:relative;
-    height:420px;
-    background-image:url('src/assets/bus2.jpg');
-    background-size:cover;
-    background-position:center;
-    border-radius:0 0 35px 35px;
-    ">
+  </div>
 
-        <!-- DARK OVERLAY -->
-        <div style="
-        position:absolute;
-        inset:0;
-        background:rgba(0,0,0,0.45);
-        border-radius:0 0 35px 35px;
-        "></div>
+  <!-- HERO SECTION -->
+  <div class="position-relative">
 
+    <!-- IMAGE -->
+    <div class="hero-img d-flex align-items-center justify-content-center">
+      <h1 class="display-5 fw-bold">Book Your Journey</h1>
+    </div>
 
-        <!-- TITLE -->
-        <div style="
-        position:relative;
-        z-index:2;
-        text-align:center;
-        padding-top:120px;
-        color:white;
-        ">
+    <!-- SEARCH BOX -->
+    <div class="container position-relative search-box">
 
-            <h1 style="
-            font-size:60px;
-            margin:0;
-            font-weight:bold;">
-                Booking Page
-            </h1>
+      <div class="card border-0 rounded-4 p-4">
 
-        </div>
+        <!-- ✅ FORM START -->
+        <form (ngSubmit)="searchBuses()">
 
+          <div class="row g-3 align-items-end">
 
-        <!-- SEARCH BOX -->
-        <div style="
-        position:absolute;
-        bottom:-70px;
-        left:50%;
-        transform:translateX(-50%);
-        width:90%;
-        max-width:1000px;
-        background:white;
-        border-radius:25px;
-        padding:30px;
-        box-shadow:0 10px 30px rgba(0,0,0,0.15);
-        z-index:5;
-        ">
-
-            <div style="
-            display:flex;
-            gap:20px;
-            align-items:center;
-            ">
-
-                <div style="flex:1;">
-                    <label style="display:block; color:gray; margin-bottom:8px;">Source</label>
-                    <input type="text" placeholder="Enter source city"
-                    style="width:100%; padding:14px; border:1px solid #ccc; border-radius:10px;">
-                </div>
-
-
-                <div style="flex:1;">
-                    <label style="display:block; color:gray; margin-bottom:8px;">Destination</label>
-                    <input type="text" placeholder="Enter destination city"
-                    style="width:100%; padding:14px; border:1px solid #ccc; border-radius:10px;">
-                </div>
-
-
-                <div style="flex:1;">
-                    <label style="display:block; color:gray; margin-bottom:8px;">Date</label>
-                    <input type="date"
-                    style="width:100%; padding:14px; border:1px solid #ccc; border-radius:10px;">
-                </div>
-
-
-                <div>
-                    <button style="
-                    margin-top:26px;
-                    background:#5a4fcf;
-                    color:white;
-                    border:none;
-                    padding:15px 35px;
-                    font-size:18px;
-                    border-radius:12px;
-                    cursor:pointer;
-                    ">
-                        Search
-                    </button>
-                </div>
-
+            <!-- SOURCE -->
+            <div class="col-md-3">
+              <label class="form-label text-muted">Source</label>
+              <input 
+                type="text" 
+                class="form-control"
+                placeholder="Enter source city"
+                [(ngModel)]="src"
+                name="src"
+                required
+              >
             </div>
 
-        </div>
+            <!-- DESTINATION -->
+            <div class="col-md-3">
+              <label class="form-label text-muted">Destination</label>
+              <input 
+                type="text" 
+                class="form-control"
+                placeholder="Enter destination city"
+                [(ngModel)]="dest"
+                name="dest"
+                required
+              >
+            </div>
+
+            <!-- DATE -->
+            <div class="col-md-3">
+              <label class="form-label text-muted">Date</label>
+              <input 
+                type="date" 
+                class="form-control"
+                [(ngModel)]="date"
+                name="date"
+                required
+              >
+            </div>
+
+            <!-- BUTTON -->
+            <div class="col-md-3 d-grid">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Search
+              </button>
+            </div>
+
+          </div>
+
+        </form>
+        
+
+      </div>
 
     </div>
+
+  </div>
 
 </div>

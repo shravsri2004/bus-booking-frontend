@@ -1,0 +1,59 @@
+/* 🌈 page background */
+.bg-page {
+  background: #f5f7fa;
+}
+
+/* 🔷 header */
+.header-bar {
+  width: 100%;
+  height: 75px;
+
+  background: linear-gradient(to right, #f8fbff, #e3f2fd);
+
+  border-bottom: 1px solid #e0e0e0;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* 🖼 hero section */
+.hero-img {
+  height: 420px;
+  background-image: url('/assets/bus2.jpg'); /* ✅ FIXED */
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 0 30px 30px;
+  position: relative;
+}
+
+/* ✨ light overlay */
+.hero-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 0 0 30px 30px;
+}
+
+/* 📝 heading */
+.hero-img h1 {
+  position: relative;
+  z-index: 2;
+  color: #0d47a1;
+}
+
+/* 📦 search box position */
+.search-box {
+  margin-top: -60px;
+}
+
+/* 💎 card styling */
+.card {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 🔘 button hover */
+.btn-primary:hover {
+  background-color: #1565c0;
+}
