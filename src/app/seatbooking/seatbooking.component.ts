@@ -20,18 +20,15 @@ export class SeatbookingComponent {
     this.createSeats();
   }
 
-  // ✅ Create 40 seats (2+2 layout)
   createSeats() {
     let count = 1;
 
     for (let i = 0; i < this.rows; i++) {
       let row = [];
 
-      // Left side (2 seats)
       row.push({ number: 'S' + count++, side: 'left' });
       row.push({ number: 'S' + count++, side: 'left' });
 
-      // Right side (2 seats)
       row.push({ number: 'S' + count++, side: 'right' });
       row.push({ number: 'S' + count++, side: 'right' });
 
