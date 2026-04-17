@@ -1,53 +1,59 @@
-<h2 style="text-align:center;">🚌 Bus Seat Booking</h2>
+<div class="booking-container">
+  <h2>🚌 Bus Seat Booking</h2>
 
-<div style="text-align:center; margin:20px;">
-  <div style="
-    width:120px;
-    padding:10px;
-    background:black;
-    color:white;
-    border-radius:10px;
-    margin:auto;
-  ">
-    Driver
-  </div>
-</div>
+  <div class="bus-box">
 
-<div style="display:flex; flex-direction:column; align-items:center;">
+    <div class="driver">Driver</div>
 
-  <div *ngFor="let row of seats" style="display:flex; margin:10px;">
+    <div class="seats-container">
 
-    <div style="display:flex;">
-      <div *ngFor="let seat of row.slice(0,2)"
-        
-        [ngClass]="
-          bookedSeats.includes(seat.number) ? 'booked' :
-          selectedSeats.includes(seat.number) ? 'selected' : 'seat'
-        "
-        class="seat-box">
-        {{seat.number}}
+      <div *ngFor="let row of seats" class="seat-row">
+
+        <!-- Left seats -->
+        <div class="seat-group">
+          <div *ngFor="let seat of row.slice(0,2)"
+            (click)="selectSeat(seat.number)"
+            [ngClass]="
+              bookedSeats.includes(seat.number) ? 'booked' :
+              selectedSeats.includes(seat.number) ? 'selected' : 'seat'
+            "
+            class="seat-box">
+            {{seat.number}}
+          </div>
+        </div>
+
+        <!-- Gap -->
+        <div class="aisle"></div>
+
+        <!-- Right seats -->
+        <div class="seat-group">
+          <div *ngFor="let seat of row.slice(2,4)"
+            (click)="selectSeat(seat.number)"
+            [ngClass]="
+              bookedSeats.includes(seat.number) ? 'booked' :
+              selectedSeats.includes(seat.number) ? 'selected' : 'seat'
+            "
+            class="seat-box">
+            {{seat.number}}
+          </div>
+        </div>
+
       </div>
+
     </div>
 
-    <div style="width:50px;"></div>
+    <div class="btns">
+<button class="book-btn"
+  (click)="bookSeats()"
+  [disabled]="selectedSeats.length === 0">
+  Book
+</button>
 
-    <div style="display:flex;">
-      <div *ngFor="let seat of row.slice(2,4)"
-        
-        [ngClass]="
-          bookedSeats.includes(seat.number) ? 'booked' :
-          selectedSeats.includes(seat.number) ? 'selected' : 'seat'
-        "
-        class="seat-box">
-        {{seat.number}}
-      </div>
+<button class="clear-btn"
+  (click)="clearSeats()">
+  Clear
+</button>
     </div>
 
   </div>
-
-</div>
-
-<div style="text-align:center; margin-top:20px;">
-  <button >Book </button>
-  <button >Clear</button>
 </div>

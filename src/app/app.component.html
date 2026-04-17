@@ -8,12 +8,34 @@
 
   </header>
 
-<nav class="m-2 p-2 bg-dark">
-  <a class="btn btn-danger m-2 text-white" routerLink="/booking">
-    Search Buses
-  </a>
+<nav class="m-2 p-2 bg-dark d-flex align-items-center justify-content-between">
 
-  </nav>
+  <!-- LEFT SIDE BUTTONS -->
+  <div class="d-flex gap-2">
+
+    <a class="btn btn-danger text-white" routerLink="/booking">
+      Search Buses
+    </a>
+
+    <a class="btn btn-danger text-white" routerLink="/seat-booking">
+      View Your Bookings
+    </a>
+
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div>
+<button class="btn btn-primary" routerLink="/signup">
+  Signup
+</button>
+<span class="text-primary me-3" routerLink="/login" style="cursor:pointer">
+  Login
+</span>
+
+
+  </div>
+
+</nav>
 
 <main class="m-2 p-2">
   <router-outlet></router-outlet>

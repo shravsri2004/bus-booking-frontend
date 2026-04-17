@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 export class SeatbookingComponent {
   rows = 10;  // 10 rows
   seats: any[][] = [];
-
   bookedSeats: string[] = [];
   selectedSeats: string[] = [];
 
@@ -28,11 +27,26 @@ export class SeatbookingComponent {
 
       row.push({ number: 'S' + count++, side: 'left' });
       row.push({ number: 'S' + count++, side: 'left' });
-
       row.push({ number: 'S' + count++, side: 'right' });
       row.push({ number: 'S' + count++, side: 'right' });
 
       this.seats.push(row);
     }
   }
+  selectSeat(seat: string) {
+  if (this.bookedSeats.includes(seat)) return;
+
+  if (this.selectedSeats.includes(seat)) {
+    this.selectedSeats = this.selectedSeats.filter(s => s !== seat);
+  } else {
+    this.selectedSeats.push(seat);
+  }
+  }
+  bookSeats() {
+  this.bookedSeats.push(...this.selectedSeats);
+  this.selectedSeats = [];
+}
+clearSeats() {
+  this.selectedSeats = [];
+}
 }

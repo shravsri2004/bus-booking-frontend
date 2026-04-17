@@ -1,15 +1,10 @@
 <div class="min-vh-100 bg-page">
 
   <!-- HEADER -->
-  <div class="header-bar d-flex justify-content-between align-items-center px-4">
+  <div class="header-bar d-flex justify-content-center align-items-center">
 
     <div class="fw-bold fs-3 text-primary">
       🚌 Bus Booking
-    </div>
-
-    <div>
-      <button class="btn btn-outline-primary me-2">Login</button>
-      <button class="btn btn-primary fw-bold">Sign Up</button>
     </div>
 
   </div>
@@ -27,7 +22,6 @@
 
       <div class="card border-0 rounded-4 p-4">
 
-        <!-- ✅ FORM START -->
         <form (ngSubmit)="searchBuses()">
 
           <div class="row g-3 align-items-end">
@@ -41,8 +35,7 @@
                 placeholder="Enter source city"
                 [(ngModel)]="src"
                 name="src"
-                required
-              >
+                required>
             </div>
 
             <!-- DESTINATION -->
@@ -54,8 +47,7 @@
                 placeholder="Enter destination city"
                 [(ngModel)]="dest"
                 name="dest"
-                required
-              >
+                required>
             </div>
 
             <!-- DATE -->
@@ -66,11 +58,10 @@
                 class="form-control"
                 [(ngModel)]="date"
                 name="date"
-                required
-              >
+                required>
             </div>
 
-            <!-- BUTTON -->
+            <!-- SEARCH -->
             <div class="col-md-3 d-grid">
               <button type="submit" class="btn btn-primary btn-lg">
                 Search
@@ -80,7 +71,6 @@
           </div>
 
         </form>
-        
 
       </div>
 
