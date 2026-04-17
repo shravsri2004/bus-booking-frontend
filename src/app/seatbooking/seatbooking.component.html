@@ -1,0 +1,53 @@
+<h2 style="text-align:center;">🚌 Bus Seat Booking</h2>
+
+<div style="text-align:center; margin:20px;">
+  <div style="
+    width:120px;
+    padding:10px;
+    background:black;
+    color:white;
+    border-radius:10px;
+    margin:auto;
+  ">
+    Driver
+  </div>
+</div>
+
+<div style="display:flex; flex-direction:column; align-items:center;">
+
+  <div *ngFor="let row of seats" style="display:flex; margin:10px;">
+
+    <div style="display:flex;">
+      <div *ngFor="let seat of row.slice(0,2)"
+        
+        [ngClass]="
+          bookedSeats.includes(seat.number) ? 'booked' :
+          selectedSeats.includes(seat.number) ? 'selected' : 'seat'
+        "
+        class="seat-box">
+        {{seat.number}}
+      </div>
+    </div>
+
+    <div style="width:50px;"></div>
+
+    <div style="display:flex;">
+      <div *ngFor="let seat of row.slice(2,4)"
+        
+        [ngClass]="
+          bookedSeats.includes(seat.number) ? 'booked' :
+          selectedSeats.includes(seat.number) ? 'selected' : 'seat'
+        "
+        class="seat-box">
+        {{seat.number}}
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div style="text-align:center; margin-top:20px;">
+  <button >Book</button>
+  <button >Clear</button>
+</div>
