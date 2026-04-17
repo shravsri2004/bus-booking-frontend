@@ -1,10 +1,18 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookingServiceService {
+
+
+  //for login 
+  token?:string='';
+  username?:string='';
+
+
 
   private searchData: any;
 
@@ -33,4 +41,15 @@ export class BookingServiceService {
     return this.httpClient.get('http://localhost:8080/bus/schedules', { params });
   
 }
+
+dologin(credentials:any):Observable<any>{
+  return this.httpClient.post('http://localhost:8080/login',credentials)
+
+}
+
+doSignUp(credentials:any):Observable<any>{
+ return this.httpClient.post('http://localhost:8080/auth/signup',credentials)
+}
+
+
 }

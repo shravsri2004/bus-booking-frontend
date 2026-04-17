@@ -19,37 +19,36 @@
 
     <h3 style="color:#555;">Sign Up</h3>
 
-    <form>
-      <input type="text" placeholder="Name" 
-        style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ddd;"><br>
+   <form (ngSubmit)="doSignUp()">
 
-      <input type="text" placeholder="Username" 
-        style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ddd;"><br>
+  <input type="text" placeholder="Name" name="name"
+    [(ngModel)]="signupData.name"
+    required
+    style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ddd;"><br>
 
-      <input type="tel" placeholder="Phone Number" 
-        style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ddd;"><br>
+  <input type="text" placeholder="Username" name="userName"
+    [(ngModel)]="signupData.userName"
+    required
+    style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ddd;"><br>
 
-      <input type="password" placeholder="Password" 
-        style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ddd;"><br>
+  <input type="tel" placeholder="Phone Number" name="phoneNo"
+    [(ngModel)]="signupData.phoneNo"
+    required
+    style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ddd;"><br>
 
-      <button style="
-        width:100%;
-        padding:10px;
-        background:#6c63ff;
-        color:white;
-        border:none;
-        border-radius:8px;
-        cursor:pointer;
-      ">
-        Sign Up
-      </button>
-    </form>
+  <input type="password" placeholder="Password" name="password"
+    [(ngModel)]="signupData.password"
+    required
+    style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ddd;"><br>
 
-    <p style="margin-top:10px;">
-      Already have an account?
-      <a routerLink="/login" style="color:#6c63ff;">Login</a>
-    </p>
+  <button type="submit"
+    style="width:100%; padding:10px; background:#6c63ff; color:white; border:none; border-radius:8px;">
+    Sign Up
+  </button>
 
-  </div>
+</form>
 
-</div>
+<!-- ✅ Error message -->
+<p class="text-danger mt-2" *ngIf="errmsg">
+  {{ errmsg }}
+</p>

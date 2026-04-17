@@ -1,47 +1,83 @@
-<div style="
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-">
+<div
+  style="
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <div
+    style="
+      width: 350px;
+      padding: 25px;
+      border-radius: 15px;
+      background: #ffffffcc;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    "
+  >
+    <h1 style="color: #6c63ff">Welcome Back</h1>
+    <h3 style="color: #555">Login</h3>
 
-  <div style="
-    width: 350px;
-    padding: 25px;
-    border-radius: 15px;
-    background: #ffffffcc;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    text-align: center;
-  ">
+    <form (ngSubmit)="onLogin()" #frm="ngForm">
+      <div><input
+        type="text"
+        placeholder="Username"
+        name="username"
+        #uname="ngModel"
+        [(ngModel)]="loginData.username"
+        required
+        style="
+          width: 100%;
+          padding: 10px;
+          margin: 8px 0;
+          border-radius: 8px;
+          border: 1px solid #ddd;
+        "
+      /></div>
+      <div *ngIf="uname.invalid && uname.touched" class="text-danger">
+        <div *ngIf="uname.errors?.['required']">Username is required for login.</div>
+      </div>
 
-    <h1 style="color:#6c63ff;">Welcome Back</h1>
-    <h3 style="color:#555;">Login</h3>
 
-    <form>
-      <input type="text" placeholder="Username" 
-        style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ddd;"><br>
+     <div> <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        #pwd="ngModel"
+        [(ngModel)]="loginData.password"
+        required
+        style="
+          width: 100%;
+          padding: 10px;
+          margin: 8px 0;
+          border-radius: 8px;
+          border: 1px solid #ddd;
+        "
+      /></div>
+      <div *ngIf="pwd.invalid && pwd.touched" class="text-danger">
+        <div *ngIf="pwd.errors?.['required']">Password is required for login.</div>
+      </div>
 
-      <input type="password" placeholder="Password" 
-        style="width:100%; padding:10px; margin:8px 0; border-radius:8px; border:1px solid #ddd;"><br>
 
-      <button style="
-        width:100%;
-        padding:10px;
-        background:#6c63ff;
-        color:white;
-        border:none;
-        border-radius:8px;
-        cursor:pointer;
-      ">
+      <button
+        type="submit"
+        style="
+          width: 100%;
+          padding: 10px;
+          background: #6c63ff;
+          color: white;
+          border: none;
+          border-radius: 8px;
+        "
+      >
         Login
       </button>
     </form>
-
-    <p style="margin-top:10px;">
+    <p class="text-danger m-2 p-2" *ngIf="errmsg!=null && errmsg.length>0"> {{errmsg}}</p> 
+    <p style="margin-top: 10px">
       Don't have an account?
-      <a routerLink="/" style="color:#6c63ff;">Sign Up</a>
+      <a routerLink="/" style="color: #6c63ff">Sign Up</a>
     </p>
-
   </div>
-
 </div>
