@@ -8,28 +8,28 @@
 
   </header>
 
-<nav *ngIf="bservice.token" class="m-2 p-2 bg-dark d-flex align-items-center justify-content-between">
+<nav *ngIf="bservice.token" 
+     class="m-2 p-2 bg-dark d-flex align-items-center justify-content-between">
 
+  <!-- LEFT SIDE -->
   <div class="d-flex gap-2">
-
     <a class="btn btn-danger text-white" routerLink="/booking">
       Search Buses
     </a>
 
     <a class="btn btn-danger text-white" routerLink="/seat-booking">
-      View Your Bookings
+      View My Bookings
     </a>
-
   </div>
 
- 
+  <!-- RIGHT SIDE -->
   <div>
-
-
-
+    <a class="btn btn-danger text-white" (click)="logout()">
+      Logout
+    </a>
   </div>
 
-</nav> 
+</nav>
 
 
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { BookingServiceService } from './booking-service.service';
 import { CommonModule } from '@angular/common';
 
@@ -13,5 +13,12 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'Bus-Booking-System';
 
-  constructor(public bservice:BookingServiceService){}
+  constructor(public bservice:BookingServiceService,private router: Router){}
+
+    logout() {
+    // clear token and username
+    this.bservice.token = '';
+    this.bservice.username = '';
+    this.router.navigate(['/login']);
+  }
 }
