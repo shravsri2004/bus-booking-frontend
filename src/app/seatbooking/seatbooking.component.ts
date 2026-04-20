@@ -92,7 +92,7 @@ export class SeatbookingComponent implements OnInit {
     const bookingData = {
       bookingDt: new Date().toISOString().split('T')[0],
       schId: Number(this.route.snapshot.paramMap.get('id')),
-      // custId: 1, // 🔥 replace with logged user later
+      // custId: 1, 
       passenger: this.passengers
     };
 
