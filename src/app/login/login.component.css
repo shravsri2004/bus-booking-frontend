@@ -1,0 +1,38 @@
+/* 🌄 full page background */
+.login-page {
+  height: 100vh;
+  background: url('/assets/background.png') center/cover no-repeat;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🌫 overlay */
+.login-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 0; /* IMPORTANT */
+}
+
+/* 📦 login card (FIXED) */
+.login-card {
+  width: 320px;
+  border-radius: 10px;
+
+  background: #ffffff; /* solid background */
+  border: 1px solid #ddd; /* clean border */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  position: relative;
+  z-index: 1; /* ABOVE overlay */
+  padding: 20px;
+}
+
+/* inputs spacing */
+.login-card input {
+  margin-bottom: 10px;
+}

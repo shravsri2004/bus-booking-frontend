@@ -10,6 +10,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'booking', component: BookpageComponent },
   { path: 'schedules', component: ScheduleComponent },
-  { path: 'seatbooking', component: SeatbookingComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
+  { path: 'seatbooking/:id', component: SeatbookingComponent },
+
+  { path: '', component: LoginComponent },
 ];

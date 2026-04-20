@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingServiceService } from '../booking-service.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-schedule',
@@ -14,7 +15,7 @@ export class ScheduleComponent implements OnInit {
   loading: boolean = true;
   error:any;
 
-  constructor(private bookingService: BookingServiceService) {}
+  constructor(private bookingService: BookingServiceService, private router:Router) {}
 
   ngOnInit(): void {
 
@@ -35,6 +36,10 @@ export class ScheduleComponent implements OnInit {
 
     });
 
+}
+
+goToSeats(rsId:number){
+this.router.navigate(['/seatbooking',rsId])
 }
 
 }

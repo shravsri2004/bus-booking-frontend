@@ -51,5 +51,19 @@ doSignUp(credentials:any):Observable<any>{
  return this.httpClient.post('http://localhost:8080/auth/signup',credentials)
 }
 
+getScheduleById(id:any) {
+  return this.httpClient.get(`http://localhost:8080/bus/schedules/${id}`);
+}
+
+getBookedSeats(scheduleId: number) {
+  return this.httpClient.get<string[]>(
+    `http://localhost:8080/bus/schedules/${scheduleId}/seats`
+  );
+}
+
+createBooking(data: any) {
+  return this.httpClient.post("http://localhost:8080/bus/addbusbooking", data);
+}
+
 
 }

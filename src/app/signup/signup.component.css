@@ -1,0 +1,93 @@
+/* 🌄 Page */
+.signup-page {
+  min-height: 100vh;
+  background: linear-gradient(to right, #eef2ff, #f8f9ff);
+}
+
+/* 🖼 FULL WIDTH BANNER */
+.header-img {
+  width: 100%;
+  height: 260px;   /* banner height */
+  overflow: hidden;
+}
+
+.header-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* ✅ fills full width nicely */
+}
+
+/* 📦 Container to center form */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -60px;  /* 🔥 slight overlap for modern look */
+}
+
+/* 🧾 Card */
+.signup-card {
+  width: 350px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+/* Titles */
+.title {
+  color: #6c63ff;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Inputs */
+.signup-card input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+.signup-card input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 5px rgba(108,99,255,0.3);
+}
+
+/* Button */
+.signup-card button {
+  width: 100%;
+  padding: 10px;
+  background: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.signup-card button:hover {
+  background: #574fd6;
+}
+
+/* Error */
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Login link */
+.login-link {
+  margin-top: 10px;
+}
+
+.login-link a {
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: bold;
+}

@@ -1,4 +1,4 @@
-<header class="bg-warning-subtle m-2 p-2">
+ <header *ngIf="bservice.token" class="bg-warning-subtle m-2 p-2">
  <div class="text-center my-4">
   <h1 class="fw-bold text-primary">
     🚌 {{ title }}
@@ -8,9 +8,8 @@
 
   </header>
 
-<nav class="m-2 p-2 bg-dark d-flex align-items-center justify-content-between">
+<nav *ngIf="bservice.token" class="m-2 p-2 bg-dark d-flex align-items-center justify-content-between">
 
-  <!-- LEFT SIDE BUTTONS -->
   <div class="d-flex gap-2">
 
     <a class="btn btn-danger text-white" routerLink="/booking">
@@ -23,19 +22,17 @@
 
   </div>
 
-  <!-- RIGHT SIDE -->
+ 
   <div>
-<button class="btn btn-primary" routerLink="/signup">
-  Signup
-</button>
-<span class="text-primary me-3" routerLink="/login" style="cursor:pointer">
-  Login
-</span>
+
 
 
   </div>
 
-</nav>
+</nav> 
+
+
+
 
 <main class="m-2 p-2">
   <router-outlet></router-outlet>

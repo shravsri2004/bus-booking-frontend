@@ -31,7 +31,7 @@
 /* 🖼 hero section */
 .hero-img {
   height: 420px;
-  background-image: url('/assets/bus2.jpg');
+  background-image: url('/assets/signupbanner.png');
   background-size: cover;
   background-position: center;
   border-radius: 0 0 30px 30px;
