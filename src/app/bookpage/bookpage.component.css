@@ -68,3 +68,7 @@
 .btn-primary:hover {
   background-color: #1565c0;
 }
+
+.invalid-placeholder::placeholder {
+  color: red !important;
+}

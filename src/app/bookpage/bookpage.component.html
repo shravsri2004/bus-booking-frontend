@@ -32,11 +32,14 @@
               <input 
                 type="text" 
                 class="form-control"
-                placeholder="Enter source city"
+                [class.invalid-placeholder]="srcname.touched && srcname.invalid"
+               [placeholder]="srcname.touched && srcname.invalid ? 'Source is required' : 'Enter Source city'"
                 [(ngModel)]="src"
                 name="src"
+                #srcname="ngModel"
                 required>
             </div>
+            
 
             <!-- DESTINATION -->
             <div class="col-md-3">
@@ -44,12 +47,14 @@
               <input 
                 type="text" 
                 class="form-control"
-                placeholder="Enter destination city"
+                [class.invalid-placeholder]="destname.touched && destname.invalid"
+              [placeholder]="destname.touched && destname.invalid ? 'Destination is required' : 'Enter destination city'"
                 [(ngModel)]="dest"
                 name="dest"
+                #destname="ngModel"
                 required>
             </div>
-
+             
             <!-- DATE -->
             <div class="col-md-3">
               <label class="form-label text-muted">Date</label>
@@ -57,9 +62,14 @@
                 type="date" 
                 class="form-control"
                 [(ngModel)]="date"
+                [class.invalid-placeholder]="dt.touched && dt.invalid"
+                 [placeholder]="dt.touched && dt.invalid ? 'Date is required' : 'Enter Booking Date'"
                 name="date"
+                #dt="ngModel"
                 required >
             </div>
+
+       
 
             <!-- SEARCH -->
             <div class="col-md-3 d-grid">
