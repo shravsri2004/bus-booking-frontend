@@ -1,18 +1,18 @@
-.booking-container {
+/* PAGE WRAPPER */
+.page-container {
+  position: relative;   /* IMPORTANT */
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   margin-top: 30px;
   font-family: Arial, sans-serif;
 }
 
-/* Heading */
-h2 {
-  margin-bottom: 20px;
-  color: #333;
+/* BUS CONTAINER */
+.booking-container {
+  text-align: center;
 }
 
-/* Bus outer box */
+/* BUS BOX */
 .bus-box {
   background: #f5f7fa;
   padding: 20px;
@@ -21,37 +21,36 @@ h2 {
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Driver */
+/* DRIVER */
 .driver {
   width: 100px;
   padding: 10px;
   background: black;
   color: white;
   border-radius: 10px;
-  text-align: center;
   margin: auto;
   margin-bottom: 20px;
 }
 
-/* Seat rows */
+/* SEAT ROW */
 .seat-row {
   display: flex;
   align-items: center;
   margin: 10px 0;
 }
 
-/* Left & right group */
+/* SEAT GROUP */
 .seat-group {
   display: flex;
   gap: 8px;
 }
 
-/* Aisle (walking space) */
+/* AISLE */
 .aisle {
   width: 50px;
 }
 
-/* Seat design */
+/* SEAT BOX */
 .seat-box {
   width: 45px;
   height: 40px;
@@ -65,7 +64,7 @@ h2 {
   transition: 0.3s;
 }
 
-/* Available seat */
+/* AVAILABLE */
 .seat {
   background: #28a745;
 }
@@ -74,21 +73,20 @@ h2 {
   transform: scale(1.1);
 }
 
-/* Selected */
+/* SELECTED */
 .selected {
   background: #ff9800;
   transform: scale(1.1);
 }
 
-/* Booked */
+/* BOOKED */
 .booked {
   background: #dc3545;
   cursor: not-allowed;
 }
 
-/* Buttons */
+/* BUTTONS */
 .btns {
-  text-align: center;
   margin-top: 20px;
 }
 
@@ -101,7 +99,7 @@ button {
   cursor: pointer;
 }
 
-/* Book button */
+/* BOOK BUTTON */
 .book-btn {
   background: #007bff;
   color: white;
@@ -111,7 +109,7 @@ button {
   background: #0056b3;
 }
 
-/* Clear button */
+/* CLEAR BUTTON */
 .clear-btn {
   background: #6c757d;
   color: white;
@@ -121,7 +119,56 @@ button {
   background: #444;
 }
 
+/* FLOATING FORM */
+.form-container {
+  position: absolute;   /* 🔥 KEY FIX */
+  right: 80px;
+  top: 50px;
+
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  border: 2px solid #ccc;
+  width: 280px;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* INPUT */
+.form-container input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* CONFIRM BUTTON */
+.confirm-btn {
+  background: #28a745;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.confirm-btn:hover {
+  background: #1e7e34;
+}
+
+/* DISABLED */
 button:disabled {
   background: #ccc;
   cursor: not-allowed;
+}
+
+/* OPTIONAL ANIMATION */
+.form-container {
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
