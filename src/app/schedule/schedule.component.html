@@ -21,6 +21,13 @@
   </div>
 
   <!-- BUS LIST -->
+
+ <div *ngIf="errmsg && errmsg.length > 0" class="no-data">
+  {{ errmsg }}
+</div>
+  <div *ngIf="schedules.length==0" class="no-data">
+  No Buses Found For this Route on the given Date
+</div>
   <div *ngFor="let bus of schedules" class="card mb-3 shadow-sm border-0">
 
     <div class="card-body">

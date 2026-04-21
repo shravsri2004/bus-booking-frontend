@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookingServiceService } from '../booking-service.service';
+import Toastify from 'toastify-js';
 
 @Component({
   selector: 'app-seatbooking',
@@ -21,20 +22,21 @@ export class SeatbookingComponent implements OnInit {
 
   schedule: any;
 
-  // 🔥 NEW: passenger form + toggle
+  // passenger form + toggle
   passengers: any[] = [];
   showForm = false;
 
   constructor(
     private route: ActivatedRoute,
-    private service: BookingServiceService
+    private service: BookingServiceService,
+    private router:Router
   ) {
     this.createSeats();
   }
 
   ngOnInit(): void {
 
-    // 🔥 FIX: convert id to number
+    //  convert id to number
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     console.log("Schedule ID:", id);
@@ -60,7 +62,7 @@ export class SeatbookingComponent implements OnInit {
 
   selectSeat(seat: string) {
 
-    // 🔥 prevent selecting already booked seat
+    //  prevent selecting already booked seat
     if (this.bookedSeats.includes(seat)) return;
 
     if (this.selectedSeats.includes(seat)) {
@@ -70,13 +72,13 @@ export class SeatbookingComponent implements OnInit {
     }
   }
 
-  // 🔥 UPDATED: now opens passenger form instead of directly booking
+  //: now opens passenger form instead of directly booking
   bookSeats() {
 
     this.passengers = this.selectedSeats.map(seat => ({
       name: '',
       age: '',
-      seatNo: seat   // ✅ send "S1", "S2"
+      seatNo: seat   //  send "S1", "S2"
     }));
 
     this.showForm = true;
@@ -86,30 +88,63 @@ export class SeatbookingComponent implements OnInit {
     this.selectedSeats = [];
   }
 
-  // 🔥 NEW: final submit API
-  submitBooking() {
+  // : final submit API
+submitBooking() {
 
-    const bookingData = {
-      bookingDt: new Date().toISOString().split('T')[0],
-      schId: Number(this.route.snapshot.paramMap.get('id')),
-      // custId: 1, 
-      passenger: this.passengers
-    };
+  const bookingData = {
+    bookingDt: new Date().toISOString().split('T')[0],
+    schId: Number(this.route.snapshot.paramMap.get('id')),
+    passenger: this.passengers
+  };
 
-    console.log("FINAL DATA:", bookingData);
+  console.log("FINAL DATA:", bookingData);
 
-    this.service.createBooking(bookingData).subscribe(res => {
+  this.service.createBooking(bookingData).subscribe({
+
+    next: (res) => {
 
       console.log("Booking Success", res);
 
-      // 🔥 update UI after booking
+     
       this.bookedSeats.push(...this.selectedSeats);
-
       this.selectedSeats = [];
       this.passengers = [];
       this.showForm = false;
-    });
-  }
+
+      
+      Toastify({
+        text: "🎉 Booking Confirmed Successfully!",
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#28a745",
+        close: true
+      }).showToast();
+
+     
+      setTimeout(() => {
+        this.router.navigate(['/schedules']);
+      }, 1500);
+    },
+
+    error: (err) => {
+
+      console.error("Booking Failed", err);
+
+      Toastify({
+        text: err?.error?.errormsg || "❌ Booking Failed!",
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#dc3545",
+        close: true
+      }).showToast();
+
+    } 
+
+  }); 
+
+}
 
   getScheduleById(id: number) {
     this.service.getScheduleById(id).subscribe(res => {

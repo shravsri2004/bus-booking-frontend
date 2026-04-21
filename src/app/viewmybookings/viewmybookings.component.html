@@ -1,0 +1,91 @@
+<div class="container mt-4">
+
+  <h2 class="text-primary text-center mb-4">🚌 My Bookings</h2>
+
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary"></div>
+  </div>
+
+  <div *ngIf="errorMsg" class="alert alert-danger text-center">
+    {{ errorMsg }}
+  </div>
+
+  <div *ngIf="!isLoading && bookings.length === 0" class="text-center text-muted">
+    No bookings found.
+  </div>
+
+  <div class="row" *ngIf="bookings.length > 0">
+
+    <div class="col-md-6 mb-4" *ngFor="let b of bookings">
+
+      <div class="card shadow-lg border-0 rounded-3">
+
+        <div class="card-body">
+
+          <!-- Booking ID -->
+          <p class="mb-1 text-muted">
+            <strong>🆔 Booking ID:</strong> {{ b.bid }}
+          </p>
+
+          <!-- Route -->
+          <h5 class="card-title text-primary fw-bold">
+            {{ b.schedule.busRoute.src }} ➝ {{ b.schedule.busRoute.dest }}
+          </h5>
+
+          <!-- Details -->
+          <p class="mb-1">
+            <strong>📅 Booking Date:</strong> {{ b.bookingDt }}
+          </p>
+
+          <p class="mb-1">
+            <strong>Total Fare:</strong> ₹{{ b.schedule.busFare*b.psgSet.length }}
+          </p>
+
+          <p class="mb-2">
+            <strong>Status:</strong>
+            <span class="badge bg-success">
+              {{ b.bookingStatus }}
+            </span>
+          </p>
+
+          <!-- Button -->
+          <button class="btn btn-outline-primary btn-sm"
+                  (click)="b.showPassengers = !b.showPassengers">
+            {{ b.showPassengers ? 'Hide Passengers' : 'View Passengers' }}
+          </button>
+
+          <!-- Passenger List -->
+          <div *ngIf="b.showPassengers" class="mt-3">
+
+            <div *ngIf="b.psgSet?.length === 0" class="text-muted">
+              No passengers found
+            </div>
+
+            <ul class="list-group" *ngIf="b.psgSet?.length > 0">
+              <li class="list-group-item d-flex justify-content-between align-items-center"
+                  *ngFor="let p of b.psgSet">
+
+                <div>
+                  <strong>{{ p.passengerName }}</strong>
+                  <br>
+                  <small>Age: {{ p.passengerAge }}</small>
+                </div>
+
+                <span class="badge bg-dark">
+                  {{ p.seatNo }}
+                </span>
+
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

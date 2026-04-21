@@ -19,6 +19,12 @@ export class AppComponent {
     // clear token and username
     this.bservice.token = '';
     this.bservice.username = '';
+    localStorage.removeItem('token');
+    localStorage.removeItem('username')
     this.router.navigate(['/login']);
+  }
+
+  getBookings(){
+    this.router.navigate(['/bookings'])
   }
 }

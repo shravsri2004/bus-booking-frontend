@@ -5,6 +5,7 @@ import { BookpageComponent } from './bookpage/bookpage.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { SeatbookingComponent } from './seatbooking/seatbooking.component';
 import { authGuard } from './auth.guard';
+import { ViewmybookingsComponent } from './viewmybookings/viewmybookings.component';
 
 export const routes: Routes = [
   { path: 'signup', component: SignupComponent},
@@ -14,4 +15,6 @@ export const routes: Routes = [
   { path: 'seatbooking/:id', component: SeatbookingComponent,canActivate:[authGuard] },
 
   { path: '', component: LoginComponent ,canActivate:[authGuard]},
+
+  {path:'bookings',component:ViewmybookingsComponent}
 ];

@@ -1,4 +1,4 @@
- <header *ngIf="bservice.token" class="bg-warning-subtle m-2 p-2">
+ <header *ngIf="bservice.ltoken" class="bg-warning-subtle m-2 p-2">
  <div class="text-center my-4">
   <h1 class="fw-bold text-primary">
     🚌 {{ title }}
@@ -8,7 +8,7 @@
 
   </header>
 
-<nav *ngIf="bservice.token" 
+<nav *ngIf="bservice.ltoken" 
      class="m-2 p-2 bg-dark d-flex align-items-center justify-content-between">
 
   <!-- LEFT SIDE -->
@@ -17,7 +17,7 @@
       Search Buses
     </a>
 
-    <a class="btn btn-danger text-white" routerLink="/seat-booking">
+    <a class="btn btn-danger text-white" (click)="getBookings()">
       View My Bookings
     </a>
   </div>

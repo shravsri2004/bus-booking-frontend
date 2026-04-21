@@ -15,6 +15,8 @@ export class ScheduleComponent implements OnInit {
   loading: boolean = true;
   error:any;
 
+  errmsg:any;
+
   constructor(private bookingService: BookingServiceService, private router:Router) {}
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class ScheduleComponent implements OnInit {
       error: (err) => {
         this.error = "Failed to load schedules";
         this.loading = false;
+        this.errmsg=err.error.errormsg;
         console.error(err);
       }
 

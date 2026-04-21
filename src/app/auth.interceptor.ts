@@ -5,11 +5,11 @@ import { BookingServiceService } from './booking-service.service';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const bookingService = inject(BookingServiceService);
 
-  if (bookingService.token) {
+  if (localStorage.getItem('token')) {
     const modifiedReq = req.clone({
       headers: req.headers.set(
         'Authorization',
-        `Bearer ${bookingService.token}`,
+        `Bearer ${localStorage.getItem('token')}`,
       ),
     });
 

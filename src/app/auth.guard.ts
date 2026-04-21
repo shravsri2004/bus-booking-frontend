@@ -6,7 +6,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   const bService=inject(BookingServiceService);
    const router =inject(Router);
-  if(bService.token){
+  if(localStorage.getItem('token')){
   return true;}
 
   router.navigate(['/login']);

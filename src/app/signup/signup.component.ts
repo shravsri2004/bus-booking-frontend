@@ -39,16 +39,11 @@ export class SignupComponent {
       },
       error: (err) => {
         console.error('Signup Failed', err);
+      
+          this.errmsg=err.error.errormsg
+        
 
-        if (err.status === 400) {
-          if (typeof err.error === 'object') {
-            this.errmsg = Object.values(err.error).join(', ');
-          } else {
-            this.errmsg = err.error || 'Validation failed';
-          }
-        } else {
-          this.errmsg = 'Something went wrong';
-        }
+       
       },
     });
   }

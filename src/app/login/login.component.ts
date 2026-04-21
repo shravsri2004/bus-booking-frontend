@@ -12,7 +12,7 @@ import { BookingServiceService } from '../booking-service.service';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  // form data
+  
   loginData = {
     username: '',
     password: '',
@@ -52,9 +52,5 @@ export class LoginComponent {
     });
   }
 
-  logout() {
-    // clear token and username
-    this.bookingService.token = '';
-    this.bookingService.username = '';
-  }
+
 }

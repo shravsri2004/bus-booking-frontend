@@ -9,28 +9,59 @@
   <div class="signup-container">
     <div class="signup-card">
 
-      <h2 class="title">🚌 Bus Booking </h2>
+      <h2 class="title">🚌 Bus Booking</h2>
       <h3 class="subtitle">Create Account</h3>
 
-      <form (ngSubmit)="doSignUp()">
+      <form (ngSubmit)="doSignUp()" #frm="ngForm">
 
+        <!-- Name -->
         <input type="text" placeholder="Name" name="name"
+          #name="ngModel"
           [(ngModel)]="signupData.name" required>
 
+        <div *ngIf="name.invalid && name.touched" class="error">
+          Name is required
+        </div>
+
+        <!-- Username -->
         <input type="text" placeholder="Username" name="userName"
-          [(ngModel)]="signupData.userName" required>
+          #uname="ngModel"
+          [(ngModel)]="signupData.userName" required minlength="3">
 
+        <div *ngIf="uname.invalid && uname.touched" class="error">
+          <span *ngIf="uname.errors?.['required']">Username is required</span>
+          <span *ngIf="uname.errors?.['minlength']">Min 3 characters required</span>
+        </div>
+
+        <!-- Phone -->
         <input type="tel" placeholder="Phone Number" name="phoneNo"
-          [(ngModel)]="signupData.phoneNo" required>
+          #phone="ngModel"
+          [(ngModel)]="signupData.phoneNo" required pattern="^[0-9]{10}$">
 
+        <div *ngIf="phone.invalid && phone.touched" class="error">
+          <span *ngIf="phone.errors?.['required']">Phone is required</span>
+          <span *ngIf="phone.errors?.['pattern']">Enter valid 10-digit number</span>
+        </div>
+
+        <!-- Password -->
         <input type="password" placeholder="Password" name="password"
-          [(ngModel)]="signupData.password" required>
+          #pwd="ngModel"
+          [(ngModel)]="signupData.password" required minlength="4">
 
-        <button type="submit">Sign Up</button>
+        <div *ngIf="pwd.invalid && pwd.touched" class="error">
+          <span *ngIf="pwd.errors?.['required']">Password is required</span>
+          <span *ngIf="pwd.errors?.['minlength']">Min 4 characters required</span>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" [disabled]="frm.invalid">Sign Up</button>
+
       </form>
 
+      <!-- Backend Error -->
       <p class="error" *ngIf="errmsg">{{ errmsg }}</p>
 
+      <!-- Login Link -->
       <p class="login-link">
         Already have an account? <a routerLink="/login">Login</a>
       </p>

@@ -11,6 +11,11 @@ export class BookingServiceService {
   //for login 
   token?:string='';
   username?:string='';
+  
+
+  get ltoken(): string | null {
+  return localStorage.getItem('token');
+}
 
 
 
@@ -64,6 +69,12 @@ getBookedSeats(scheduleId: number) {
 createBooking(data: any) {
   return this.httpClient.post("http://localhost:8080/bus/addbusbooking", data);
 }
+
+getBookings(){
+  return this.httpClient.get(`http://localhost:8080/bus/bookings`);
+}
+
+
 
 
 }
