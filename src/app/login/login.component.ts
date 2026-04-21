@@ -52,9 +52,5 @@ export class LoginComponent {
     });
   }
 
-  logout() {
-    // clear token and username
-    this.bookingService.token = '';
-    this.bookingService.username = '';
-  }
+
 }

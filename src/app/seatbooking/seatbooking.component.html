@@ -1,79 +1,83 @@
-<div class="booking-container">
-  <h2>🚌 Bus Seat Booking</h2>
+<div class="page-container">
 
-  <div class="bus-box">
+  <!-- BUS (CENTER, FIXED) -->
+  <div class="booking-container">
 
-    <div class="driver">Driver</div>
+    <h2>🚌 Bus Seat Booking</h2>
 
-    <div class="seats-container">
+    <div class="bus-box">
 
-      <div *ngFor="let row of seats" class="seat-row">
+      <div class="driver">Driver</div>
 
-        <!-- Left -->
-        <div class="seat-group">
-          <div *ngFor="let seat of row.slice(0,2)"
-            (click)="selectSeat(seat.number)"
-            [ngClass]="
-              bookedSeats.includes(seat.number) ? 'booked' :
-              selectedSeats.includes(seat.number) ? 'selected' : 'seat'
-            "
-            class="seat-box">
-            {{seat.number}}
+      <div class="seats-container">
+
+        <div *ngFor="let row of seats" class="seat-row">
+
+          <!-- LEFT SIDE -->
+          <div class="seat-group">
+            <div *ngFor="let seat of row.slice(0,2)"
+                 (click)="selectSeat(seat.number)"
+                 [ngClass]="
+                  bookedSeats.includes(seat.number) ? 'booked' :
+                  selectedSeats.includes(seat.number) ? 'selected' : 'seat'
+                 "
+                 class="seat-box">
+              {{seat.number}}
+            </div>
           </div>
-        </div>
 
-        <div class="aisle"></div>
+          <div class="aisle"></div>
 
-        <!-- Right -->
-        <div class="seat-group">
-          <div *ngFor="let seat of row.slice(2,4)"
-            (click)="selectSeat(seat.number)"
-            [ngClass]="
-              bookedSeats.includes(seat.number) ? 'booked' :
-              selectedSeats.includes(seat.number) ? 'selected' : 'seat'
-            "
-            class="seat-box">
-            {{seat.number}}
+          <!-- RIGHT SIDE -->
+          <div class="seat-group">
+            <div *ngFor="let seat of row.slice(2,4)"
+                 (click)="selectSeat(seat.number)"
+                 [ngClass]="
+                  bookedSeats.includes(seat.number) ? 'booked' :
+                  selectedSeats.includes(seat.number) ? 'selected' : 'seat'
+                 "
+                 class="seat-box">
+              {{seat.number}}
+            </div>
           </div>
+
         </div>
 
       </div>
 
-    </div>
+      <!-- BUTTONS -->
+      <div class="btns">
+        <button class="book-btn"
+                (click)="bookSeats()"
+                [disabled]="selectedSeats.length === 0">
+          Book
+        </button>
 
-    <!-- Buttons -->
-    <div class="btns">
-
-      <button class="book-btn"
-        (click)="bookSeats()"
-        [disabled]="selectedSeats.length === 0">
-        Book
-      </button>
-
-      <button class="clear-btn"
-        (click)="clearSeats()">
-        Clear
-      </button>
+        <button class="clear-btn"
+                (click)="clearSeats()">
+          Clear
+        </button>
+      </div>
 
     </div>
-
-  </div>
-</div>
-
-<!-- 🔥 NEW PASSENGER FORM -->
-<div *ngIf="showForm" class="form-container">
-
-  <h3>Enter Passenger Details</h3>
-
-  <div *ngFor="let p of passengers; let i = index">
-
-    <h4>Passenger {{i+1}} (Seat {{p.seatNo}})</h4>
-
-    <input [(ngModel)]="p.name" placeholder="Name" />
-    <input [(ngModel)]="p.age" type="number" placeholder="Age" />
-
   </div>
 
-  <button (click)="submitBooking()">Confirm Booking</button>
+  <!-- FLOATING FORM (RIGHT SIDE) -->
+  <div *ngIf="showForm" class="form-container">
+
+    <h3>Enter Passenger Details</h3>
+
+    <div *ngFor="let p of passengers; let i = index">
+      <h4>Passenger {{i+1}} (Seat {{p.seatNo}})</h4>
+
+      <input [(ngModel)]="p.name" placeholder="Name" />
+      <input [(ngModel)]="p.age" type="number" placeholder="Age" />
+    </div>
+
+    <button class="confirm-btn" (click)="submitBooking()">
+      Confirm Booking
+    </button>
+
+  </div>
 
 </div>
